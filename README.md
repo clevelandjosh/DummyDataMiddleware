@@ -174,39 +174,17 @@ drwxr-xr-x.  6 root  root   124 Nov 30 03:50 root
 ```
 ### A comparison using diff
 ```
- diff -dy -W 220 initial_results.txt post_results.txt
--rwxr-xr-x. 1 alice alice   0 Nov 30 13:33 /tmp/alice/not_ww_dir_without_sticky/not_ww_file_without_sticky      -rwxr-xr-x. 1 alice alice   0 Nov 30 13:33 /tmp/alice/not_ww_dir_without_sticky/not_ww_file_without_sticky
--rwxr-xr-t. 1 alice alice   0 Nov 30 13:33 /tmp/alice/not_ww_dir_without_sticky/not_ww_file_with_sticky         -rwxr-xr-t. 1 alice alice   0 Nov 30 13:33 /tmp/alice/not_ww_dir_without_sticky/not_ww_file_with_sticky
--rwxrwxrwx. 1 alice alice 119 Nov 30 13:34 /tmp/alice/not_ww_dir_without_sticky/ww_file_without_sticky          -rwxrwxrwx. 1 alice alice 119 Nov 30 13:34 /tmp/alice/not_ww_dir_without_sticky/ww_file_without_sticky
--rwxrwxrwt. 1 alice alice 110 Nov 30 13:34 /tmp/alice/not_ww_dir_without_sticky/ww_file_with_sticky             -rwxrwxrwt. 1 alice alice 110 Nov 30 13:34 /tmp/alice/not_ww_dir_without_sticky/ww_file_with_sticky
--rwxr-xr-x. 1 alice alice   0 Nov 30 13:33 /tmp/alice/not_ww_dir_with_sticky/not_ww_file_without_sticky         -rwxr-xr-x. 1 alice alice   0 Nov 30 13:33 /tmp/alice/not_ww_dir_with_sticky/not_ww_file_without_sticky
--rwxr-xr-t. 1 alice alice   0 Nov 30 13:33 /tmp/alice/not_ww_dir_with_sticky/not_ww_file_with_sticky            -rwxr-xr-t. 1 alice alice   0 Nov 30 13:33 /tmp/alice/not_ww_dir_with_sticky/not_ww_file_with_sticky
--rwxrwxrwx. 1 alice alice 119 Nov 30 13:34 /tmp/alice/not_ww_dir_with_sticky/ww_file_without_sticky             -rwxrwxrwx. 1 alice alice 119 Nov 30 13:34 /tmp/alice/not_ww_dir_with_sticky/ww_file_without_sticky
--rwxrwxrwt. 1 alice alice 110 Nov 30 13:34 /tmp/alice/not_ww_dir_with_sticky/ww_file_with_sticky                -rwxrwxrwt. 1 alice alice 110 Nov 30 13:34 /tmp/alice/not_ww_dir_with_sticky/ww_file_with_sticky
--rwxr-xr-x. 1 alice alice   0 Nov 30 13:33 /tmp/alice/ww_dir_without_sticky/not_ww_file_without_sticky       <
--rwxr-xr-t. 1 alice alice   0 Nov 30 13:33 /tmp/alice/ww_dir_without_sticky/not_ww_file_with_sticky          <
--rwxrwxrwx. 1 alice alice 119 Nov 30 13:34 /tmp/alice/ww_dir_without_sticky/ww_file_without_sticky           <
--rwxrwxrwt. 1 alice alice 110 Nov 30 13:34 /tmp/alice/ww_dir_without_sticky/ww_file_with_sticky              <
--rwxr-xr-x. 1 alice alice   0 Nov 30 13:33 /tmp/alice/ww_dir_with_sticky/not_ww_file_without_sticky             -rwxr-xr-x. 1 alice alice   0 Nov 30 13:33 /tmp/alice/ww_dir_with_sticky/not_ww_file_without_sticky
--rwxr-xr-t. 1 alice alice   0 Nov 30 13:33 /tmp/alice/ww_dir_with_sticky/not_ww_file_with_sticky                -rwxr-xr-t. 1 alice alice   0 Nov 30 13:33 /tmp/alice/ww_dir_with_sticky/not_ww_file_with_sticky
--rwxrwxrwx. 1 alice alice 119 Nov 30 13:34 /tmp/alice/ww_dir_with_sticky/ww_file_without_sticky                 -rwxrwxrwx. 1 alice alice 119 Nov 30 13:34 /tmp/alice/ww_dir_with_sticky/ww_file_without_sticky
--rwxrwxrwt. 1 alice alice 110 Nov 30 13:34 /tmp/alice/ww_dir_with_sticky/ww_file_with_sticky                    -rwxrwxrwt. 1 alice alice 110 Nov 30 13:34 /tmp/alice/ww_dir_with_sticky/ww_file_with_sticky
--rwxr-xr-x. 1 root  root    0 Nov 30 13:33 /tmp/root/not_ww_dir_without_sticky/not_ww_file_without_sticky       -rwxr-xr-x. 1 root  root    0 Nov 30 13:33 /tmp/root/not_ww_dir_without_sticky/not_ww_file_without_sticky
--rwxr-xr-t. 1 root  root    0 Nov 30 13:33 /tmp/root/not_ww_dir_without_sticky/not_ww_file_with_sticky          -rwxr-xr-t. 1 root  root    0 Nov 30 13:33 /tmp/root/not_ww_dir_without_sticky/not_ww_file_with_sticky
--rwxrwxrwx. 1 root  root  119 Nov 30 13:34 /tmp/root/not_ww_dir_without_sticky/ww_file_without_sticky           -rwxrwxrwx. 1 root  root  119 Nov 30 13:34 /tmp/root/not_ww_dir_without_sticky/ww_file_without_sticky
--rwxrwxrwt. 1 root  root  110 Nov 30 13:34 /tmp/root/not_ww_dir_without_sticky/ww_file_with_sticky              -rwxrwxrwt. 1 root  root  110 Nov 30 13:34 /tmp/root/not_ww_dir_without_sticky/ww_file_with_sticky
--rwxr-xr-x. 1 root  root    0 Nov 30 13:33 /tmp/root/not_ww_dir_with_sticky/not_ww_file_without_sticky          -rwxr-xr-x. 1 root  root    0 Nov 30 13:33 /tmp/root/not_ww_dir_with_sticky/not_ww_file_without_sticky
--rwxr-xr-t. 1 root  root    0 Nov 30 13:33 /tmp/root/not_ww_dir_with_sticky/not_ww_file_with_sticky             -rwxr-xr-t. 1 root  root    0 Nov 30 13:33 /tmp/root/not_ww_dir_with_sticky/not_ww_file_with_sticky
--rwxrwxrwx. 1 root  root  119 Nov 30 13:34 /tmp/root/not_ww_dir_with_sticky/ww_file_without_sticky              -rwxrwxrwx. 1 root  root  119 Nov 30 13:34 /tmp/root/not_ww_dir_with_sticky/ww_file_without_sticky
--rwxrwxrwt. 1 root  root  110 Nov 30 13:34 /tmp/root/not_ww_dir_with_sticky/ww_file_with_sticky                 -rwxrwxrwt. 1 root  root  110 Nov 30 13:34 /tmp/root/not_ww_dir_with_sticky/ww_file_with_sticky
--rwxr-xr-x. 1 root  root    0 Nov 30 13:33 /tmp/root/ww_dir_without_sticky/not_ww_file_without_sticky        <
--rwxr-xr-t. 1 root  root    0 Nov 30 13:33 /tmp/root/ww_dir_without_sticky/not_ww_file_with_sticky           <
--rwxrwxrwx. 1 root  root  119 Nov 30 13:34 /tmp/root/ww_dir_without_sticky/ww_file_without_sticky            <
--rwxrwxrwt. 1 root  root  110 Nov 30 13:34 /tmp/root/ww_dir_without_sticky/ww_file_with_sticky               <
--rwxr-xr-x. 1 root  root    0 Nov 30 13:33 /tmp/root/ww_dir_with_sticky/not_ww_file_without_sticky              -rwxr-xr-x. 1 root  root    0 Nov 30 13:33 /tmp/root/ww_dir_with_sticky/not_ww_file_without_sticky
--rwxr-xr-t. 1 root  root    0 Nov 30 13:33 /tmp/root/ww_dir_with_sticky/not_ww_file_with_sticky                 -rwxr-xr-t. 1 root  root    0 Nov 30 13:33 /tmp/root/ww_dir_with_sticky/not_ww_file_with_sticky
--rwxrwxrwx. 1 root  root  119 Nov 30 13:34 /tmp/root/ww_dir_with_sticky/ww_file_without_sticky                  -rwxrwxrwx. 1 root  root  119 Nov 30 13:34 /tmp/root/ww_dir_with_sticky/ww_file_without_sticky
--rwxrwxrwt. 1 root  root  110 Nov 30 13:34 /tmp/root/ww_dir_with_sticky/ww_file_with_sticky                     -rwxrwxrwt. 1 root  root  110 Nov 30 13:34 /tmp/root/ww_dir_with_sticky/ww_file_with_sticky
+diff  --suppress-common-lines initial_results.txt post_results.txt
+9,12d8
+< -rwxr-xr-x. 1 alice alice   0 Nov 30 13:33 /tmp/alice/ww_dir_without_sticky/not_ww_file_without_sticky
+< -rwxr-xr-t. 1 alice alice   0 Nov 30 13:33 /tmp/alice/ww_dir_without_sticky/not_ww_file_with_sticky
+< -rwxrwxrwx. 1 alice alice 119 Nov 30 13:34 /tmp/alice/ww_dir_without_sticky/ww_file_without_sticky
+< -rwxrwxrwt. 1 alice alice 110 Nov 30 13:34 /tmp/alice/ww_dir_without_sticky/ww_file_with_sticky
+25,28d20
+< -rwxr-xr-x. 1 root  root    0 Nov 30 13:33 /tmp/root/ww_dir_without_sticky/not_ww_file_without_sticky
+< -rwxr-xr-t. 1 root  root    0 Nov 30 13:33 /tmp/root/ww_dir_without_sticky/not_ww_file_with_sticky
+< -rwxrwxrwx. 1 root  root  119 Nov 30 13:34 /tmp/root/ww_dir_without_sticky/ww_file_without_sticky
+< -rwxrwxrwt. 1 root  root  110 Nov 30 13:34 /tmp/root/ww_dir_without_sticky/ww_file_with_sticky
 ```
 ## Note the files removed were all in the ww_dir_without_sticky directories.
 
