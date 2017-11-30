@@ -6,6 +6,7 @@
 ### 1. Create the test environment 
  - Create users Alice and Bob (Alice is the file owner, Bob will be the bad guy later)
  - Create Alice's files and directories
+ - Create root files and directories as well
  - Set the permissions on the files
 
 ### 2. Have Bob take a whack at the files
