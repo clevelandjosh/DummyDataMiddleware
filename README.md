@@ -44,6 +44,26 @@ drwxr-xr-x.  6 alice alice  124 Nov 30 03:50 alice
 -rwxr-xr-x.  1 root  root  1175 Nov 29 19:15 directory_and_file_creation.sh
 drwxr-xr-x.  6 root  root   124 Nov 30 03:50 root
 -rwxrwxr-x.  1 bob   bob    480 Nov 30 03:49 try_to_edit_and_remove.sh
+
+ ls -al alice/ root/
+alice/:
+total 0
+drwxr-xr-x. 6 alice alice 124 Nov 30 15:39 .
+drwxrwxrwt. 4 root  root  153 Nov 30 15:39 ..
+drwxr-xr-x. 2 alice alice 128 Nov 30 15:39 not_ww_dir_without_sticky
+drwxr-xr-t. 2 alice alice 128 Nov 30 15:39 not_ww_dir_with_sticky
+drwxrwxrwx. 2 alice alice 128 Nov 30 15:39 ww_dir_without_sticky
+drwxrwxrwt. 2 alice alice 128 Nov 30 15:39 ww_dir_with_sticky
+
+root/:
+total 0
+drwxr-xr-x. 6 root root 124 Nov 30 15:39 .
+drwxrwxrwt. 4 root root 153 Nov 30 15:39 ..
+drwxr-xr-x. 2 root root 128 Nov 30 15:39 not_ww_dir_without_sticky
+drwxr-xr-t. 2 root root 128 Nov 30 15:39 not_ww_dir_with_sticky
+drwxrwxrwx. 2 root root 128 Nov 30 15:39 ww_dir_without_sticky
+drwxrwxrwt. 2 root root 128 Nov 30 15:39 ww_dir_with_sticky
+
 ```
 
 ### This is a breakdown of the permissions created by directory_and_file_creation.sh
@@ -186,7 +206,15 @@ diff  --suppress-common-lines initial_results.txt post_results.txt
 < -rwxrwxrwx. 1 root  root  119 Nov 30 13:34 /tmp/root/ww_dir_without_sticky/ww_file_without_sticky
 < -rwxrwxrwt. 1 root  root  110 Nov 30 13:34 /tmp/root/ww_dir_without_sticky/ww_file_with_sticky
 ```
-## Note the files removed were all in the ww_dir_without_sticky directories.
+### Note the files removed were all in the ww_dir_without_sticky directories.
+
+## Observations
+### The sticky bit does not prevent one user from modifying the contents of a world writable file owned by another user
+### The sticky bit does not protect the files in a subdirectory from being modified
+### The sticky bit does protect against deletion of files if the file is world writable
+
 
 ### The scripts are all here, if you are inclined to test this out on your system. 
 ## Note, as this creates a bunch of world writable files, make sure to clean up after you are done testing things out. 
+
+
