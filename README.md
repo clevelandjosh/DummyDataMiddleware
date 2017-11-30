@@ -1,6 +1,6 @@
 # Understanding the Sticky Bit
 
-## This is a simple overview of how the sticky bit (and a little bit on SUID and GUID bits work too) in Linux permissions.
+## This is a simple overview of how the sticky bit in Linux permissions.
 
 ## There are three phases to the scripts.
 ### 1. Create the test environment 
