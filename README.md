@@ -16,15 +16,25 @@
  3a. record the output.
 
 ## As an example
-### [root@ip tmp]# ls -al
+### Note the sticky bit is ON for the /tmp directory
+### 
+```
+[root@ip tmp]# ls -al
 total 8
 drwxrwxrwt.  2 root root   77 Nov 30 03:50 .
 dr-xr-xr-x. 18 root root  236 Nov 29 19:49 ..
 -rwxr-xr-x.  1 root root 1175 Nov 29 19:15 directory_and_file_creation.sh
 -rwxrwxr-x.  1 bob  bob   480 Nov 30 03:49 try_to_edit_and_remove.sh
-### [root@ip tmp]# ./directory_and_file_creation.sh
+```
 
-### [root@ip tmp]# ls -al
+### As root create the files and directories
+```
+[root@ip tmp]# ./directory_and_file_creation.sh
+```
+
+### This shows the created alice and root directories
+```
+[root@ip tmp]# ls -al
 total 8
 drwxrwxrwt.  4 root  root   102 Nov 30 03:50 .
 dr-xr-xr-x. 18 root  root   236 Nov 29 19:49 ..
@@ -32,8 +42,10 @@ drwxr-xr-x.  6 alice alice  124 Nov 30 03:50 alice
 -rwxr-xr-x.  1 root  root  1175 Nov 29 19:15 directory_and_file_creation.sh
 drwxr-xr-x.  6 root  root   124 Nov 30 03:50 root
 -rwxrwxr-x.  1 bob   bob    480 Nov 30 03:49 try_to_edit_and_remove.sh
+```
 
-## This is a breakdown of the permissions created by directory_and_file_creation.sh
+### This is a breakdown of the permissions created by directory_and_file_creation.sh
+### Note they are all empty 
 
 ```
 ### [root@ip tmp]# ls -al alice/*/*
@@ -71,92 +83,20 @@ drwxr-xr-x.  6 root  root   124 Nov 30 03:50 root
 -rwxrwxrwx. 1 root root 0 Nov 30 03:50 root/ww_dir_with_sticky/ww_file_without_sticky
 -rwxrwxrwt. 1 root root 0 Nov 30 03:50 root/ww_dir_with_sticky/ww_file_with_sticky
 ```
+
+### Now lets switch to user bob
 ```
 ### [root@ip tmp]# su bob
+```
+
+### bob will run the try_to_edit_and_remove.sh script
+```
 ### [bob@ip tmp]$ ls -al try_to_edit_and_remove.sh
 -rwxrwxr-x. 1 bob bob 480 Nov 30 03:49 try_to_edit_and_remove.sh
+
 ### [bob@ip tmp]$ ./try_to_edit_and_remove.sh
-rm: cannot remove ‘*.new’: No such file or directory
-chmod: changing permissions of ‘not_ww_file_without_sticky’: Operation not permitted
-./try_to_edit_and_remove.sh: line 12: not_ww_file_without_sticky: Permission denied
-rm: cannot remove ‘*.new’: No such file or directory
-chmod: changing permissions of ‘not_ww_file_with_sticky’: Operation not permitted
-./try_to_edit_and_remove.sh: line 12: not_ww_file_with_sticky: Permission denied
-rm: cannot remove ‘*.new’: No such file or directory
-chmod: changing permissions of ‘ww_file_without_sticky’: Operation not permitted
-rm: cannot remove ‘*.new’: No such file or directory
-chmod: changing permissions of ‘ww_file_with_sticky’: Operation not permitted
-rm: cannot remove ‘*.new’: No such file or directory
-chmod: changing permissions of ‘not_ww_file_without_sticky’: Operation not permitted
-./try_to_edit_and_remove.sh: line 12: not_ww_file_without_sticky: Permission denied
-rm: cannot remove ‘*.new’: No such file or directory
-chmod: changing permissions of ‘not_ww_file_with_sticky’: Operation not permitted
-./try_to_edit_and_remove.sh: line 12: not_ww_file_with_sticky: Permission denied
-rm: cannot remove ‘*.new’: No such file or directory
-chmod: changing permissions of ‘ww_file_without_sticky’: Operation not permitted
-rm: cannot remove ‘*.new’: No such file or directory
-chmod: changing permissions of ‘ww_file_with_sticky’: Operation not permitted
-rm: cannot remove ‘*.new’: No such file or directory
-chmod: changing permissions of ‘not_ww_file_without_sticky’: Operation not permitted
-./try_to_edit_and_remove.sh: line 12: not_ww_file_without_sticky: Permission denied
-rm: cannot remove ‘*.new’: No such file or directory
-chmod: changing permissions of ‘not_ww_file_with_sticky’: Operation not permitted
-./try_to_edit_and_remove.sh: line 12: not_ww_file_with_sticky: Permission denied
-rm: cannot remove ‘*.new’: No such file or directory
-chmod: changing permissions of ‘ww_file_without_sticky’: Operation not permitted
-rm: cannot remove ‘*.new’: No such file or directory
-chmod: changing permissions of ‘ww_file_with_sticky’: Operation not permitted
-rm: cannot remove ‘*.new’: No such file or directory
-chmod: changing permissions of ‘not_ww_file_without_sticky’: Operation not permitted
-./try_to_edit_and_remove.sh: line 12: not_ww_file_without_sticky: Permission denied
-rm: cannot remove ‘*.new’: No such file or directory
-chmod: changing permissions of ‘not_ww_file_with_sticky’: Operation not permitted
-./try_to_edit_and_remove.sh: line 12: not_ww_file_with_sticky: Permission denied
-rm: cannot remove ‘*.new’: No such file or directory
-chmod: changing permissions of ‘ww_file_without_sticky’: Operation not permitted
-rm: cannot remove ‘*.new’: No such file or directory
-chmod: changing permissions of ‘ww_file_with_sticky’: Operation not permitted
-rm: cannot remove ‘*.new’: No such file or directory
-chmod: changing permissions of ‘not_ww_file_without_sticky’: Operation not permitted
-./try_to_edit_and_remove.sh: line 32: not_ww_file_without_sticky: Permission denied
-rm: cannot remove ‘*.new’: No such file or directory
-chmod: changing permissions of ‘not_ww_file_with_sticky’: Operation not permitted
-./try_to_edit_and_remove.sh: line 32: not_ww_file_with_sticky: Permission denied
-rm: cannot remove ‘*.new’: No such file or directory
-chmod: changing permissions of ‘ww_file_without_sticky’: Operation not permitted
-rm: cannot remove ‘*.new’: No such file or directory
-chmod: changing permissions of ‘ww_file_with_sticky’: Operation not permitted
-rm: cannot remove ‘*.new’: No such file or directory
-chmod: changing permissions of ‘not_ww_file_without_sticky’: Operation not permitted
-./try_to_edit_and_remove.sh: line 32: not_ww_file_without_sticky: Permission denied
-rm: cannot remove ‘*.new’: No such file or directory
-chmod: changing permissions of ‘not_ww_file_with_sticky’: Operation not permitted
-./try_to_edit_and_remove.sh: line 32: not_ww_file_with_sticky: Permission denied
-rm: cannot remove ‘*.new’: No such file or directory
-chmod: changing permissions of ‘ww_file_without_sticky’: Operation not permitted
-rm: cannot remove ‘*.new’: No such file or directory
-chmod: changing permissions of ‘ww_file_with_sticky’: Operation not permitted
-rm: cannot remove ‘*.new’: No such file or directory
-chmod: changing permissions of ‘not_ww_file_without_sticky’: Operation not permitted
-./try_to_edit_and_remove.sh: line 32: not_ww_file_without_sticky: Permission denied
-rm: cannot remove ‘*.new’: No such file or directory
-chmod: changing permissions of ‘not_ww_file_with_sticky’: Operation not permitted
-./try_to_edit_and_remove.sh: line 32: not_ww_file_with_sticky: Permission denied
-rm: cannot remove ‘*.new’: No such file or directory
-chmod: changing permissions of ‘ww_file_without_sticky’: Operation not permitted
-rm: cannot remove ‘*.new’: No such file or directory
-chmod: changing permissions of ‘ww_file_with_sticky’: Operation not permitted
-rm: cannot remove ‘*.new’: No such file or directory
-chmod: changing permissions of ‘not_ww_file_without_sticky’: Operation not permitted
-./try_to_edit_and_remove.sh: line 32: not_ww_file_without_sticky: Permission denied
-rm: cannot remove ‘*.new’: No such file or directory
-chmod: changing permissions of ‘not_ww_file_with_sticky’: Operation not permitted
-./try_to_edit_and_remove.sh: line 32: not_ww_file_with_sticky: Permission denied
-rm: cannot remove ‘*.new’: No such file or directory
-chmod: changing permissions of ‘ww_file_without_sticky’: Operation not permitted
-rm: cannot remove ‘*.new’: No such file or directory
-chmod: changing permissions of ‘ww_file_with_sticky’: Operation not permitted
 ```
+### The errors are being directed to null, they are expected. If you want to see the errors swap out commands with the error redirects off.
 
 ```
 ### [bob@ip tmp]$ ls -al alice/*/*
@@ -196,7 +136,11 @@ chmod: changing permissions of ‘ww_file_with_sticky’: Operation not permitte
 ### [bob@ip tmp]$
 ```
 
+### As the user bob, we will see if he can remove files, in /tmp 
+### Remember the sticky bit on /tmp? We are checking for sub-directories being impacted.
+
 ```
+[bob@ip tmp]$ rm -f root/*/* alice/*/*
 [bob@ip tmp]$ ls -al root/*/*
 -rwxr-xr-x. 1 root root   0 Nov 30 03:50 root/not_ww_dir_without_sticky/not_ww_file_without_sticky
 -rwxr-xr-t. 1 root root   0 Nov 30 03:50 root/not_ww_dir_without_sticky/not_ww_file_with_sticky
