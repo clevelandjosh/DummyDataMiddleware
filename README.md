@@ -97,6 +97,7 @@ drwxr-xr-x.  6 root  root   124 Nov 30 03:50 root
 ### [bob@ip tmp]$ ./try_to_edit_and_remove.sh
 ```
 ### The errors are being directed to null, they are expected. If you want to see the errors swap out commands with the error redirects off.
+### Note the files that were world writable (sticky bit or not) were written to. See the file size? 
 
 ```
 ### [bob@ip tmp]$ ls -al alice/*/*
