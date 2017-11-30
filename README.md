@@ -4,16 +4,16 @@
 
 ## There are three phases to the scripts.
 ### 1. Create the test environment 
- 1a. Create users Alice and Bob (Alice is the file owner, Bob will be the bad guy later)
- 1b. Create Alice's files and directories
- 1c. Set the permissions on the files
+ a. Create users Alice and Bob (Alice is the file owner, Bob will be the bad guy later)
+ b. Create Alice's files and directories
+ c. Set the permissions on the files
 
 ### 2. Have Bob take a whack at the files
- 2a. Bob will first try to modify each of the files created. He will first try to write to each file
- 2b. Bob will try to delete each file
+ a. Bob will first try to modify each of the files created. He will first try to write to each file
+ b. Bob will try to delete each file
 
 ### 3. Verify the results
- 3a. record the output.
+ a. record the output.
 
 ## As an example
 ### Note the sticky bit is ON for the /tmp directory
