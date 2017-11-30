@@ -1,6 +1,6 @@
 # Understanding the Sticky Bit
 
-## This is a simple overview of how the sticky bit in Linux permissions.
+## This is a simple overview of how the sticky bit in Linux works.
 
 ## There are three phases to the scripts.
 ### 1. Create the test environment 
@@ -9,14 +9,15 @@
  - Create root files and directories as well
  - Set the permissions on the files
 
-### 2. Have Bob take a whack at the files
- - Bob will first try to modify each of the files created. He will first try to write to each file
+### 2. Have Bob take a whack at writing to, and then trying to delete, the files
+ - Bob will try to modify each of the files created. He will write to each file using the cat command
  - Bob will try to delete each file
 
 ### 3. Verify the results
  - record the output.
+ - compare the results using the diff command
 
-## As an example
+## On our example system
 ### Note the sticky bit is ON for the /tmp directory
 ### 
 ```
@@ -208,3 +209,6 @@ drwxr-xr-x.  6 root  root   124 Nov 30 03:50 root
 -rwxrwxrwt. 1 root  root  110 Nov 30 13:34 /tmp/root/ww_dir_with_sticky/ww_file_with_sticky                     -rwxrwxrwt. 1 root  root  110 Nov 30 13:34 /tmp/root/ww_dir_with_sticky/ww_file_with_sticky
 ```
 ## Note the files removed were all in the ww_dir_without_sticky directories.
+
+### The scripts are all here, if you are inclined to test this out on your system. 
+## Note, as this creates a bunch of world writable files, make sure to clean up after you are done testing things out. 
