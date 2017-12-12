@@ -209,13 +209,34 @@ diff  --suppress-common-lines initial_results.txt post_results.txt
 ```
 #### Note the files removed were all in the ww_dir_without_sticky directories.
 
+#### Similarly, bob will try to create a file in both the world writable and non-world writable, with the sticky bit set. The difference in behaviour is made clear.
+
+```
+[bob@ip not_ww_dir_with_sticky]$ pwd
+/tmp/alice/not_ww_dir_with_sticky
+[bob@ip not_ww_dir_with_sticky]$ touch file_in_not_ww_dir with_sticky.txt
+touch: cannot touch ‘file_in_not_ww_dir’: Permission denied
+touch: cannot touch ‘with_sticky.txt’: Permission denied
+[bob@ip not_ww_dir_with_sticky]$ cd ../ww_dir_with_sticky/
+[bob@ip ww_dir_with_sticky]$ touch file_in_not_ww_dir with_sticky.txt
+[bob@ip ww_dir_with_sticky]$ ls -al
+total 0
+drwxrwxrwt. 2 alice alice 113 Dec 12 20:24 .
+drwxr-xr-x. 5 alice alice  95 Dec 11 05:30 ..
+-rw-rw-r--. 1 bob   bob     0 Dec 12 20:24 file_in_not_ww_dir
+-rwxr-xr-t. 1 alice alice   0 Nov 30 15:39 not_ww_file_with_sticky
+-rw-rw-r--. 1 bob   bob     0 Dec 12 20:24 with_sticky.txt
+-rwxrwxrwt. 1 alice alice   0 Nov 30 15:39 ww_file_with_sticky
+```
+
 ### Observations
 #### The sticky bit does not prevent one user from modifying the contents of a world writable file owned by another user
 #### The sticky bit does not protect the files in a subdirectory from being modified
 #### The sticky bit does protect against deletion of files if the file is world writable
+#### If the directory is world writable, any user can create content, regardless of the sticky bit
 
 
 #### The scripts are all here, if you are inclined to test this out on your system. 
 ### Note, as this creates a bunch of world writable files, make sure to clean up after you are done testing things out. 
 
-
+I hope this is helpful!
